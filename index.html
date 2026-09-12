@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ronald Adunget — IT Supervisor / Infrastructure &amp; Systems Specialist</title>
+<meta name="description" content="Ronald Adunget — IT Systems Specialist. 8+ years managing network infrastructure, security and multi-site technical support across humanitarian and industrial operations in Uganda.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #0B1420;
+    --panel:     #121F30;
+    --panel-2:   #0F1A29;
+    --line:      #223448;
+    --text:      #E4E9EF;
+    --muted:     #8CA0B3;
+    --amber:     #E3A857;
+    --teal:      #4FA98C;
+    --max: 1180px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--amber); color:#101820; }
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  .display{ font-family:'Space Grotesk', sans-serif; }
+
+  /* ---------- layout shell ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns: 300px 1fr;
+    max-width: var(--max);
+    margin: 0 auto;
+    min-height:100vh;
+  }
+  @media (max-width: 880px){
+    .shell{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- sidebar ---------- */
+  .sidebar{
+    border-right:1px solid var(--line);
+    padding: 40px 28px;
+    position: sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  @media (max-width: 880px){
+    .sidebar{ position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); padding:28px 24px; }
+  }
+  .id-block{ margin-bottom: 30px; }
+  .name{ font-size: 1.7rem; font-weight:700; letter-spacing:-0.01em; margin:0 0 4px; }
+  .role{ color:var(--amber); font-size:0.86rem; margin:0; letter-spacing:0.02em; }
+
+  .status{
+    display:flex; align-items:center; gap:8px;
+    margin: 18px 0 26px;
+    font-size:0.78rem; color:var(--muted);
+    padding: 10px 12px;
+    border:1px solid var(--line);
+    background:var(--panel);
+  }
+  .status .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 0 3px rgba(79,169,140,0.15);
+    flex:none;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .status .dot{ animation: pulse 2.4s ease-in-out infinite; }
+  }
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.35; } }
+
+  nav.rail{ display:flex; flex-direction:column; gap:2px; margin-bottom:auto; }
+  nav.rail a{
+    text-decoration:none; color:var(--muted);
+    font-size:0.82rem; padding:9px 10px;
+    border-left:2px solid transparent;
+    transition: color .15s ease, border-color .15s ease, background .15s ease;
+  }
+  nav.rail a:hover, nav.rail a:focus-visible{ color:var(--text); border-left-color:var(--amber); background:rgba(227,168,87,0.06); }
+  @media (max-width:880px){
+    nav.rail{ flex-direction:row; flex-wrap:wrap; margin: 4px 0 0; }
+  }
+
+  .side-contact{ margin-top:28px; padding-top:22px; border-top:1px solid var(--line); font-size:0.8rem; color:var(--muted); }
+  .side-contact div{ margin-bottom:8px; word-break:break-word; }
+  .side-contact a{ text-decoration:none; }
+  .side-contact a:hover{ color:var(--amber); }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--amber); color:#12100A;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem; font-weight:600;
+    padding:11px 16px;
+    text-decoration:none;
+    border:1px solid var(--amber);
+    margin-top:20px;
+    transition: background .15s ease, color .15s ease;
+  }
+  .btn:hover{ background:transparent; color:var(--amber); }
+
+  /* ---------- main content ---------- */
+  main{ padding: 48px 40px 80px; }
+  @media (max-width: 880px){ main{ padding: 36px 24px 60px; } }
+
+  section{ margin-bottom: 64px; scroll-margin-top: 24px; }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem; letter-spacing:0.08em;
+    color:var(--muted);
+    display:block; margin-bottom:10px;
+  }
+  h2.head{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.35rem; font-weight:600;
+    margin: 0 0 22px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--line);
+  }
+
+  /* hero */
+  .hero p.lede{
+    font-size:1.05rem; color:var(--text); max-width:62ch; margin: 0 0 30px;
+  }
+  .stat-row{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  @media (max-width:640px){ .stat-row{ grid-template-columns:repeat(2,1fr); } }
+  .stat{ background:var(--panel); padding:18px 16px; }
+  .stat .num{ font-family:'Space Grotesk',sans-serif; font-size:1.7rem; font-weight:700; color:var(--amber); }
+  .stat .label{ font-size:0.72rem; color:var(--muted); margin-top:4px; }
+
+  /* capability grid */
+  .cap-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  @media (max-width:760px){ .cap-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:480px){ .cap-grid{ grid-template-columns:1fr; } }
+  .cap{
+    position:relative;
+    border:1px solid var(--line);
+    background:var(--panel);
+    padding:18px 16px 16px;
+  }
+  .cap::before, .cap::after{
+    content:""; position:absolute; width:8px; height:8px;
+    border-top:1px solid var(--amber); border-left:1px solid var(--amber);
+    top:-1px; left:-1px;
+  }
+  .cap::after{ left:auto; right:-1px; border-left:none; border-right:1px solid var(--amber); }
+  .cap h3{ font-size:0.92rem; margin:0 0 6px; font-weight:600; }
+  .cap p{ font-size:0.83rem; color:var(--muted); margin:0; }
+
+  /* experience log */
+  .log{ border-left:1px solid var(--line); padding-left:26px; margin-left:6px; }
+  .entry{ position:relative; padding-bottom:34px; }
+  .entry:last-child{ padding-bottom:0; }
+  .entry::before{
+    content:""; position:absolute; left:-31px; top:4px;
+    width:10px; height:10px; background:var(--bg);
+    border:2px solid var(--amber);
+  }
+  .entry .meta{ display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 12px; margin-bottom:8px; }
+  .entry .title{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.02rem; }
+  .entry .org{ color:var(--teal); font-size:0.88rem; }
+  .entry .dates{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--muted); margin-left:auto; }
+  .entry ul{ margin:0; padding-left:18px; color:var(--muted); font-size:0.9rem; }
+  .entry li{ margin-bottom:6px; }
+  .entry li::marker{ color:var(--amber); }
+
+  /* stack */
+  .stack{ display:flex; flex-direction:column; gap:14px; }
+  .stack-row{ display:grid; grid-template-columns:170px 1fr; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); }
+  @media (max-width:640px){ .stack-row{ grid-template-columns:1fr; gap:6px; } }
+  .stack-row .cat{ font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--amber); }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--text); background:var(--panel-2); border:1px solid var(--line); padding:5px 9px; }
+
+  /* achievements */
+  .ach-list{ display:grid; gap:12px; }
+  .ach{ display:grid; grid-template-columns:26px 1fr; gap:12px; align-items:start; padding:14px 0; border-bottom:1px solid var(--line); }
+  .ach .idx{ font-family:'IBM Plex Mono', monospace; color:var(--amber); font-size:0.8rem; }
+  .ach p{ margin:0; font-size:0.92rem; }
+
+  /* education note */
+  .note{ border:1px dashed var(--line); padding:16px 18px; font-size:0.88rem; color:var(--muted); }
+  .note strong{ color:var(--text); }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:34px 40px 40px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    font-size:0.78rem; color:var(--muted);
+  }
+  @media (max-width:880px){ footer{ padding:26px 24px 34px; } }
+  footer a{ text-decoration:none; }
+  footer a:hover{ color:var(--amber); }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="id-block">
+      <p class="name display">Ronald Adunget</p>
+      <p class="role mono">IT Supervisor / Infrastructure &amp; Systems</p>
+    </div>
+
+    <div class="status">
+      <span class="dot" aria-hidden="true"></span>
+      Available — ready to relocate to Kapeeka
+    </div>
+
+    <nav class="rail" aria-label="Section navigation">
+      <a href="#summary">Summary</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#experience">Experience</a>
+      <a href="#stack">Technical Stack</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="side-contact">
+      <div>📍 Moroto / Kampala, Uganda</div>
+      <div>✉ <a href="mailto:adungetronald2@gmail.com">adungetronald2@gmail.com</a></div>
+      <div>☎ <a href="tel:+256785708124">+256 785 708 124</a></div>
+      <div>🔗 <a href="https://www.linkedin.com/in/adunget-ronald" target="_blank" rel="noopener">linkedin.com/in/adunget-ronald</a></div>
+    </div>
+
+    <a class="btn" href="assets/Ronald_Adunget_Resume.pdf" download>↓ Download résumé (PDF)</a>
+  </aside>
+
+  <main>
+
+    <section class="hero" id="summary">
+      <span class="tag">// 01 SUMMARY</span>
+      <h2 class="head">IT infrastructure, at the scale of one.</h2>
+      <p class="lede">Eight-plus years running networks, servers, hardware and IT security — the last four as the sole technology lead for a national organisation operating across multiple sites in Uganda. Comfortable working at IT-Manager accountability on a technician's budget, supervising field teams, and coordinating vendors across busy, multi-department operations.</p>
+
+      <div class="stat-row">
+        <div class="stat"><div class="num">8+</div><div class="label">Years in IT</div></div>
+        <div class="stat"><div class="num">4+</div><div class="label">Years as sole IT lead</div></div>
+        <div class="stat"><div class="num">1</div><div class="label">Region-wide system rollout led</div></div>
+        <div class="stat"><div class="num">4+</div><div class="label">Workflows automated</div></div>
+      </div>
+    </section>
+
+    <section id="capabilities">
+      <span class="tag">// 02 CAPABILITIES</span>
+      <h2 class="head">Core capabilities</h2>
+      <div class="cap-grid">
+        <div class="cap"><h3>Network &amp; Infrastructure</h3><p>LAN/WAN &amp; Wi-Fi, TCP/IP, DHCP/DNS, routers, switches, firewalls, servers.</p></div>
+        <div class="cap"><h3>Systems &amp; User Support</h3><p>Windows/M365, hardware troubleshooting, asset management, ERP-style beneficiary systems.</p></div>
+        <div class="cap"><h3>Security &amp; Access</h3><p>Azure AD / Entra ID, access control, IT policy authorship, backup, cybersecurity training.</p></div>
+        <div class="cap"><h3>Vendor &amp; Project Coordination</h3><p>Service-provider management, procurement, site setup and commissioning.</p></div>
+        <div class="cap"><h3>Team Supervision</h3><p>Task allocation, coaching, cross-department coordination under pressure.</p></div>
+        <div class="cap"><h3>Documentation &amp; Reporting</h3><p>IT policy, operations manuals, incident logs, asset and license records.</p></div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <span class="tag">// 03 EXPERIENCE LOG</span>
+      <h2 class="head">Professional experience</h2>
+      <div class="log">
+
+        <div class="entry">
+          <div class="meta">
+            <span class="title">IT Officer (Head of Technology)</span>
+            <span class="org">Andre Foods International (AFI) — Moroto / National</span>
+            <span class="dates mono">Jan 2022 – Present</span>
+          </div>
+          <ul>
+            <li>Sole IT lead for a national NGO; independently manage network infrastructure, servers, hardware and user support across multiple field locations — equivalent to IT Manager/Supervisor accountability for 4+ years.</li>
+            <li>Administer Microsoft Entra ID (Azure AD): user accounts, security policies, role-based access rights.</li>
+            <li>Authored the organisation's first IT Policy and operations manuals; run cybersecurity and phishing-awareness training.</li>
+            <li>Multi-site remote and on-site technical support across administration, finance, HR and field teams.</li>
+            <li>Coordinate vendors on procurement, repairs and licensing — secured a Microsoft 365 Nonprofit grant funding a full Exchange Online migration.</li>
+            <li>Led web hosting and domain migration in-house; rebuilt the organisational website on WordPress.</li>
+            <li>Automated leave, vehicle-log, asset and requisition workflows with Power Automate and SharePoint.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="meta">
+            <span class="title">IT Assistant</span>
+            <span class="org">Andre Foods International (AFI) — Moroto/Napak</span>
+            <span class="dates mono">Sep 2021 – Dec 2021</span>
+          </div>
+          <ul>
+            <li>Primary technical interface between WFP and AFI for the SCOPE/CODA beneficiary-management rollout across the Karamoja region.</li>
+            <li>System configuration, troubleshooting and user-access support on live identity-management platforms.</li>
+            <li>Documented recurring issues and escalated system-improvement recommendations to WFP's technical teams.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="meta">
+            <span class="title">Food Distribution Supervisor</span>
+            <span class="org">Andre Foods International (AFI) — Moroto/Napak</span>
+            <span class="dates mono">Dec 2020 – Aug 2021</span>
+          </div>
+          <ul>
+            <li>Supervised field teams delivering end-to-end food-commodity distribution, allocating daily tasks against tight timelines.</li>
+            <li>Maintained accountability records and coordinated with partner systems for beneficiary verification.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="meta">
+            <span class="title">Business Support Assistant – IT (SCOPE/CODA)</span>
+            <span class="org">World Food Programme (WFP) — Moroto</span>
+            <span class="dates mono">Apr 2018 – Aug 2020</span>
+          </div>
+          <ul>
+            <li>Specialist technical support for WFP's SCOPE and CODA systems; managed local network, hardware and software infrastructure.</li>
+            <li>Troubleshot system and network failures in field-based operations; supported user training on core platforms.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="meta">
+            <span class="title">Field Consultant — Research, Registration &amp; Card Issuance</span>
+            <span class="org">Various Organisations — Uganda</span>
+            <span class="dates mono">2011 – 2018</span>
+          </div>
+          <ul>
+            <li>Field-based data collection, identity registration and card-issuance exercises for NGO and government programmes.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="stack">
+      <span class="tag">// 04 STACK</span>
+      <h2 class="head">Technical stack</h2>
+      <div class="stack">
+        <div class="stack-row">
+          <div class="cat">NETWORKING</div>
+          <div class="chips">
+            <span class="chip">LAN/WAN</span><span class="chip">Wi-Fi</span><span class="chip">TCP/IP</span><span class="chip">DHCP</span><span class="chip">DNS</span><span class="chip">Routers</span><span class="chip">Switches</span><span class="chip">Firewalls</span>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="cat">SYSTEMS</div>
+          <div class="chips">
+            <span class="chip">Windows Server/Desktop</span><span class="chip">Microsoft 365</span><span class="chip">Azure AD / Entra ID</span><span class="chip">SharePoint</span><span class="chip">Exchange Online</span><span class="chip">Power Automate</span>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="cat">SECURITY &amp; DATA</div>
+          <div class="chips">
+            <span class="chip">Access Management</span><span class="chip">Endpoint Protection</span><span class="chip">IT Policy</span><span class="chip">Backup &amp; Recovery</span>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="cat">APPLICATIONS</div>
+          <div class="chips">
+            <span class="chip">WFP SCOPE</span><span class="chip">WFP CODA</span><span class="chip">WordPress</span><span class="chip">Domain / DNS Admin</span>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="cat">MANAGEMENT</div>
+          <div class="chips">
+            <span class="chip">Asset &amp; License Mgmt</span><span class="chip">Incident Tracking</span><span class="chip">Vendor Coordination</span><span class="chip">Documentation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <span class="tag">// 05 ACHIEVEMENTS</span>
+      <h2 class="head">Key achievements</h2>
+      <div class="ach-list">
+        <div class="ach"><div class="idx">01</div><p>Delivered a full Microsoft 365 digital transformation at zero licensing cost via a successful Microsoft Nonprofit grant application.</p></div>
+        <div class="ach"><div class="idx">02</div><p>Pioneered WFP SCOPE/CODA beneficiary-system rollout across the Karamoja region — rare hands-on deployment expertise in East Africa.</p></div>
+        <div class="ach"><div class="idx">03</div><p>Sole IT resource running national multi-site NGO infrastructure at IT Manager/Director level of accountability for 4+ consecutive years.</p></div>
+        <div class="ach"><div class="idx">04</div><p>Automated 4+ core organisational workflows using Microsoft 365 tools, eliminating paper-based processes.</p></div>
+      </div>
+    </section>
+
+    <section id="education">
+      <span class="tag">// 06 EDUCATION</span>
+      <h2 class="head">Education &amp; development</h2>
+      <div class="note">
+        <strong>Bachelor of Information Technology</strong> — in progress, final units pending (Uganda, since 2010), supplemented by 8+ years of hands-on, work-based IT leadership. Open to pursuing CCNA / CompTIA certification.
+      </div>
+    </section>
+
+    <section id="contact">
+      <span class="tag">// 07 CONTACT</span>
+      <h2 class="head">Get in touch</h2>
+      <p style="color:var(--muted); max-width:56ch;">Open to IT Supervisor, IT Officer and infrastructure-support roles across Uganda and the region — on-site or multi-site. References available on request.</p>
+      <a class="btn" href="mailto:adungetronald2@gmail.com">✉ Email Ronald</a>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <span>© <span id="year"></span> Ronald Adunget</span>
+  <span>Moroto / Kampala, Uganda</span>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
